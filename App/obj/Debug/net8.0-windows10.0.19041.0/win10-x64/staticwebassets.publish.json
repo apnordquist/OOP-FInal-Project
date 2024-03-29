@@ -1,15 +1,15 @@
 {
   "Version": 1,
-  "Hash": "xkaWR7gb1uAeLJx140W9qpD/U/V44ukk01frjorMmjk=",
-  "Source": "OOP-FInalProject",
+  "Hash": "h9BnvXAqqAqe2CYTUqfRmC3ZMfF2YyxRx9fLL7vds4Q=",
+  "Source": "TourManager",
   "BasePath": "/",
   "Mode": "Root",
   "ManifestType": "Publish",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "OOP-FInalProject\\wwwroot",
-      "Source": "OOP-FInalProject",
+      "Name": "TourManager\\wwwroot",
+      "Source": "TourManager",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\",
       "BasePath": "/",
       "Pattern": "**"
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\OOP-FInalProject.styles.css",
-      "SourceId": "OOP-FInalProject",
+      "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\TourManager.styles.css",
+      "SourceId": "TourManager",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\",
       "BasePath": "/",
-      "RelativePath": "OOP-FInalProject.styles.css",
+      "RelativePath": "TourManager.styles.css",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Primary",
@@ -33,15 +33,15 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\OOP-FInalProject.styles.css"
+      "OriginalItemSpec": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\bundle\\TourManager.styles.css"
     },
     {
-      "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\OOP-FInalProject.bundle.scp.css",
-      "SourceId": "OOP-FInalProject",
+      "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\TourManager.bundle.scp.css",
+      "SourceId": "TourManager",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\",
       "BasePath": "/",
-      "RelativePath": "OOP-FInalProject.bundle.scp.css",
+      "RelativePath": "TourManager.bundle.scp.css",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Primary",
@@ -52,11 +52,11 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\OOP-FInalProject.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\obj\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\scopedcss\\projectbundle\\TourManager.bundle.scp.css"
     },
     {
       "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\css\\app.css",
-      "SourceId": "OOP-FInalProject",
+      "SourceId": "TourManager",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\",
       "BasePath": "/",
@@ -75,7 +75,7 @@
     },
     {
       "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
-      "SourceId": "OOP-FInalProject",
+      "SourceId": "TourManager",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\",
       "BasePath": "/",
@@ -94,7 +94,7 @@
     },
     {
       "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
-      "SourceId": "OOP-FInalProject",
+      "SourceId": "TourManager",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\",
       "BasePath": "/",
@@ -113,7 +113,7 @@
     },
     {
       "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\favicon.png",
-      "SourceId": "OOP-FInalProject",
+      "SourceId": "TourManager",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\",
       "BasePath": "/",
@@ -132,7 +132,7 @@
     },
     {
       "Identity": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\index.html",
-      "SourceId": "OOP-FInalProject",
+      "SourceId": "TourManager",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\wwwroot\\",
       "BasePath": "/",

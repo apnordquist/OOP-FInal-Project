@@ -1100,3 +1100,4 @@ C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-android\stamp\_Con
 C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-android\OOP-FInalProject.sourcelink.json

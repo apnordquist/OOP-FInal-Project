@@ -203,3 +203,4 @@ C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-windows10.0.19041.
 C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+C:\Users\apnor\CPRG211\OOP-FInal Project\App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\OOP-FInalProject.sourcelink.json

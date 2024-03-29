@@ -1,0 +1,27 @@
+﻿@page "/Tournament"
+
+@using TourManager.Data
+@inject IJSRuntime JSRuntime
+
+<h1 class="mt-6">Tournament</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <!-- Input creating a new tournament -->
+                <input type="text" class="form-control" @bind="newPlayerfirstname" placeholder="First Name" />
+                <input type="text" class="form-control" @bind="newPlayerlastname" placeholder="Last Name" />
+                <!-- Button to create -->
+                <button class="btn btn-primary" type="button" @onclick="AddPlayer">Start a new Tournament</button>
+                <!-- Button to load -->
+                <button class="btn btn-primary" type="button" @onclick="AddPlayer">Load Exisitng Tournament</button>
+                <!-- Button to save -->
+                <button class="btn btn-primary" type="button" @onclick="AddPlayer">Save Current Tournamment</button>
+            </div>
+        </div>
+    </div>
+
+@code {
+
+}

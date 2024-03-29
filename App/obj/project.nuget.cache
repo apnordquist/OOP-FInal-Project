@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7K72EH5VEsPBPvGv1cv/0E3i7zlmV4A3g/oyr93OzcOudEw+Nx/+nk5nlFzfoZabZPIMnqhW3iwmGeBOYNT6Ww==",
+  "dgSpecHash": "vA8steMC6dhZyyo7SmWR5BYpo81dg35lc7eHOFp6Zm/s2766NKQq/lF+qSnPXq4BagXwZP6Qb/XrbLfCjFNqZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\OOP-FInalProject.csproj",
+  "projectFilePath": "C:\\Users\\apnor\\CPRG211\\OOP-FInal Project\\App\\TourManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\apnor\\.nuget\\packages\\googlegson\\2.10.1.4\\googlegson.2.10.1.4.nupkg.sha512",
     "C:\\Users\\apnor\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.0\\microsoft.aspnetcore.authorization.8.0.0.nupkg.sha512",
