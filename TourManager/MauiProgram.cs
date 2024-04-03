@@ -20,7 +20,7 @@ namespace TourManager
     		builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<StateContainer>();
             return builder.Build();
         }
     }

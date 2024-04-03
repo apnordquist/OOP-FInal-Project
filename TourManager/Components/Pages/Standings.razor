@@ -1,7 +1,58 @@
 ﻿@page "/standings"
+@using TourManager.Data
+@inject IJSRuntime JSRuntime
+@inject StateContainer StateContainer
 
-<h3>Standings</h3>
+<h1 class="mt-6">Standings</h1>
+<p>Current Tournament: <b>@StateContainer.currentTournament.Name</b></p>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Need Heading and format as a table -->
+            <div class="form-check">
+                <!-- Label for displaying player name -->
+                <label class="form-check-label">Name</label>
+                <!-- Label for displaying player Score -->
+                <label class="form-check-label">Score</label>
+                <!-- Label for displaying player Wins -->
+                <label class="form-check-label">Wins</label>
+                <!-- Label for displaying player Draws -->
+                <label class="form-check-label">Draws</label>
+                <!-- Label for displaying player Losses -->
+                <label class="form-check-label">Losses</label>
+            </div>
+            <!-- Display players -->
+            @foreach (var Player in StateContainer.currentTournament.PlayerList)
+            {
+                <div class="form-check">
+                    <!-- Label for displaying player name -->
+                    <label class="form-check-label">@Player.Name</label>
+                    <!-- Label for displaying player Score -->
+                    <label class="form-check-label">@Player.Score</label>
+                    <!-- Label for displaying player Wins -->
+                    <label class="form-check-label">@Player.Wins</label>
+                    <!-- Label for displaying player Draws -->
+                    <label class="form-check-label">@Player.Draws</label>
+                    <!-- Label for displaying player Losses -->
+                    <label class="form-check-label">@Player.Losses</label>
+                </div>
+            }
+            <!-- Button for update standings -->
+            <button class="btn btn-danger btn-sm ms-2" @onclick="() => Update()">Update</button>
+            <!-- Button for printing standings -->
+            <button class="btn btn-danger btn-sm ms-2" @onclick="() => Print()">Print</button>
+        </div>
+    </div>
+</div>
 
 @code {
-
+    //add update method
+    public void Update()
+    {
+            StateContainer.currentTournament.RankPlayers();
+    }
+    //add print method
+    public void Print()
+    { }
 }

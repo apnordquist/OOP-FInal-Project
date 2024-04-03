@@ -9,14 +9,19 @@ namespace TourManager.Data
     public class Tournament
     {
         //attributes
+        public string Name {  get; set; }
         public string Organizer { get; set; }
         public DateTime? Date { get; set; }
-        public List<Player>? PlayerList { get; set; }
+        public List<Player> PlayerList { get; set; }
+        public List<Round> RoundList { get; set; }
         //constructor
-        public Tournament(string organizer, DateTime? date)
+        public Tournament(string name, string organizer, DateTime? date)
         {
-            this.Organizer = organizer;
-            this.Date = date;
+            Name = name;
+            Organizer = organizer;
+            Date = date;
+            PlayerList = new List<Player> ();
+            RoundList = new List<Round> ();
         }
         //methods
         public void NewPlayer(string firstname, string lastname)
@@ -45,6 +50,18 @@ namespace TourManager.Data
                 p.UpdateScore();
                 Console.WriteLine($"{p.Name}\t{p.Score}\t{p.PrintRecords}");
             }
+        }
+        public bool IsEmpty()
+        {
+            if ( Organizer == null && Date == null)
+                return true;
+            else
+                return false;
+        }
+        public void Clear()
+        {
+            PlayerList = null;
+            RoundList = null;
         }
     }
 }

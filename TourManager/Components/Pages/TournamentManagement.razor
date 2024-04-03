@@ -1,0 +1,91 @@
+﻿@page "/TournamentManagement"
+
+@using TourManager.Data
+@using Microsoft.Maui.Storage
+@using System.IO
+@using System.Text.Json
+@inject StateContainer StateContainer
+@inject IJSRuntime JSRuntime
+
+<h1 class="mt-6">Tournament Management</h1>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <!-- Input creating a new tournament -->
+                <input type="text" class="form-control" @bind="TournamentName" placeholder="Tournamenet" />
+                <input type="text" class="form-control" @bind="Organizer" placeholder="Organizer" />
+                <input type="datetime" class="form-control" @bind="Date" placeholder="Today" />
+                <!-- Button to create -->
+                <button class="btn btn-primary" type="button" @onclick="Create">Start a new Tournament</button>
+                <!-- Button to load -->
+                <button class="btn btn-primary" type="button" @onclick="Load">Load Exisitng Tournament</button>
+                <!-- Button to save -->
+                <button class="btn btn-primary" type="button" @onclick="Save">Save Current Tournamment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    //new tournament info
+    public string TournamentName;
+    public string Organizer;
+    public DateTime Date;
+    //string to contain error massage
+    private string errorMessage = "Tournament Created";
+    //Check for special characters
+    private bool HasSpecialChars(string String)
+    {
+        char[] SpecialChars = { '!', '@', '#', '$', '%', '^', '&', '*' }; //list of unexpected char
+        return SpecialChars.Any(ch => String.Contains(ch));
+    }
+    //new function
+    private async void Create()
+    {
+        // Check if the input field is not empty
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(TournamentName))
+            {
+                if (HasSpecialChars(TournamentName) == false)
+                {
+                    // Create a new tournament with the input text
+                    // Save tourname to state container
+                    StateContainer.currentTournament = new Tournament(TournamentName, Organizer, Date);
+                    TournamentName = ""; // Clear the input field after adding the player list
+                    Organizer = "";
+                    Date = DateTime.Today;
+                }
+                else
+                {
+                    throw new SpecialCharException("Items cannot contain special characters (@ # $ %)");
+                }
+            }
+        }
+        catch (SpecialCharException e) //catch the exception
+        {
+            errorMessage = e.Message;
+            await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
+        }
+    }
+    //save function    
+    private async Task Save()
+    {
+        var contents = JsonSerializer.Serialize(StateContainer.currentTournament);
+        var path = Path.Combine(FileSystem.AppDataDirectory, "TourManager.json");
+        File.WriteAllText(path, contents);
+        await App.Current.MainPage.DisplayAlert("Tournament Saved", $"Tournament saved to {path}", "OK");
+    }
+    //load function
+    private void Load()
+    {
+        var path = Path.Combine(FileSystem.AppDataDirectory, "todo.json");
+        if (!File.Exists(path))
+            return;
+        var contents = File.ReadAllText(path);
+        var savedTournament = JsonSerializer.Deserialize<Tournament>(contents);
+    }
+
+}

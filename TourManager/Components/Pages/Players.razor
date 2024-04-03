@@ -1,8 +1,11 @@
 ﻿@page "/players"
 @using TourManager.Data
 @inject IJSRuntime JSRuntime
+@inject StateContainer StateContainer
 
 <h1 class="mt-6">Particpants</h1>
+
+<p>Current Tournament: <b>@StateContainer.currentTournament.Name</b></p>
 
 <div class="container mt-4">
     <div class="row">
@@ -20,8 +23,8 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Registered</h2>
-            <!-- Display todo items -->
-            @foreach (var Player in PlayerList)
+            <!-- Display players -->
+            @foreach (var Player in StateContainer.currentTournament.PlayerList)
             {
                 <div class="form-check">
                     <!-- Label for displaying player name -->
@@ -29,7 +32,7 @@
                     <!-- Button for editing players -->
                     <button class="btn btn-danger btn-sm ms-2" @onclick="() => EditPlayer(Player, newPlayerfirstname, newPlayerlastname)">Edit</button>
                     <!-- Button for deleting players -->
-                    <button class="btn btn-danger btn-sm ms-2" @onclick="() => RemovePlayer(PlayerList, Player)">Remove</button>
+                    <button class="btn btn-danger btn-sm ms-2" @onclick="() => RemovePlayer(StateContainer.currentTournament.PlayerList, Player)">Remove</button>
                 </div>
             }
         </div>
@@ -40,8 +43,6 @@
     // String variables to store the first and last name of the new player
     private string newPlayerfirstname = "";
     private string newPlayerlastname = "";
-    // List to store player
-    private List<Player> PlayerList = new List<Player>();
     //list for saved or deleted players
     private List<Player> SavedPlayers = new List<Player>();
     //string to contain error massage
@@ -65,7 +66,7 @@
                 if (HasSpecialChars(newPlayerfirstname) == false)
                 {
                     // Create a new player with the input text and add it to the list
-                    PlayerList.Add(new Player(newPlayerfirstname,newPlayerlastname));
+                    StateContainer.currentTournament.PlayerList.Add(new Player(newPlayerfirstname, newPlayerlastname));
                     newPlayerfirstname = ""; // Clear the input field after adding the player list
                     newPlayerlastname = "";
                 }
