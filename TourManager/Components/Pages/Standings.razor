@@ -50,9 +50,18 @@
     //add update method
     public void Update()
     {
-            StateContainer.currentTournament.RankPlayers();
+        StateContainer.currentTournament.RankPlayers();
     }
     //add print method
     public void Print()
-    { }
+    {
+        string filename = "TourManager" + StateContainer.currentTournament.Date + ".txt";
+        string header = $"{"Name":25} {"Score":25} {"Wins":25} {"Draws":25} {"Losses":25}";
+        File.WriteAllText(filename, header);
+        foreach (Player player in StateContainer.currentTournament.PlayerList)
+        {
+            string line = player.ToString();  // Convert to object to string
+            File.AppendAllText(filename, line);  // Create a file and write the content of writeText to it
+        }
+    }
 }

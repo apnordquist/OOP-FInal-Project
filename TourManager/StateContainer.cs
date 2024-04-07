@@ -10,7 +10,7 @@ namespace TourManager
 {
     public class StateContainer
     {
-        private Tournament savedTournament = new Tournament("None","None", DateTime.Today); //the saved state between pages and default state
+        private Tournament savedTournament = new Tournament("None", "None", "Today"); //the saved state between pages and default state
 
         public Tournament currentTournament //the state as reperesented on the page
         {

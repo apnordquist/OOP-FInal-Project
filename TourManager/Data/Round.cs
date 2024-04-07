@@ -9,53 +9,67 @@ namespace TourManager.Data
     public class Round
     {
         //attributes
-        public int CurrentRound = 0;
-        public LinkedList<Match> Matches;
+        public int CurrentRound { get; set; }
+        public List<Match> Matches;
         //constructor
-        public Round(int RoundNum, LinkedList<Match> Pairings)
+        public Round(int RoundNum)
         {
             CurrentRound = RoundNum;
-            Matches = Pairings;
+            Matches = new List<Match>();
         }
         //methods
-        public void CreatePairings(Tournament tournament) //creates a number of matches for the round
+        public void CreatePairings(List<Player> PlayerList, int round) //creates a number of matches for the round
         {
-            CurrentRound++;
-            Matches = new LinkedList<Match>();
-            tournament.RankPlayers();
-            for (int i = 0; i < tournament.PlayerList.Count; i += 2) // count by 2 for each pairing
+            /*            if (PlayerList.Count % 2 != 0) //make sure list is even
+                        {
+                            Player by = new Player("no opponent", "found");
+                            PlayerList.Add(by); //add a 'by' for one unmatched player
+                        }*/
+            List<Player> Finished = new List<Player>(); //players already in a pairing
+            for (int i = 0; i < PlayerList.Count; i++) // count by 2 for each pairing
             {
-                //skeleton pairing
-                Player current = tournament.PlayerList[i];
-                Player opponent = null;
-
-                for (int j = i + 1; j < tournament.PlayerList.Count; j++) //loop through players
+                Player current = PlayerList[i];
+                int table = 0;
+                if (!Finished.Contains(current))
                 {
-                    if (!current.Opponents.Contains(tournament.PlayerList[j])) //filter out previous opponents
+                    for (int j = i + 1; j < PlayerList.Count; j++) //loop through players
                     {
-                        opponent = tournament.PlayerList[j]; //next closest ranked player
-                        break;
-                    }
-                    if (opponent != null) //if opponent found, create pairing
-                    {
-                        Match pairing = new Match(current, opponent); //new match
-                        Matches.AddLast(pairing); //add to list
-                        break;
-                    }
-                    else
-                    {
-                        //if no opponent is found
+                        if (current.Opponents.First == null) //if list is empty
+                        {
+                            Match pairing = new Match(current, PlayerList[j], round, table); //new match
+                            current.Opponents.AddLast(PlayerList[j]); //add to past opponent
+                            Matches.Add(pairing); //add to list
+                            Finished.Add(PlayerList[j]); //add to finished to not pair again
+                            table++;
+                            break;
+                        }
+                        if (!current.Opponents.Contains(PlayerList[j])) //if not previous opponents
+                        {
+                            Match pairing = new Match(current, PlayerList[j], round, table); //new match
+                            current.Opponents.AddLast(PlayerList[j]); //add to past opponent
+                            Matches.Add(pairing); //add to list
+                            Finished.Add(PlayerList[j]); //add to finished to not pair again
+                            table++;
+                            break;
+                        }
                     }
                 }
             }
-            Round NextRound = new Round(CurrentRound, Matches); //create the round object
         }
-        public void UpdatePairing(Round round, Player player1, Player player2) //manual override to create pairing
+        public string PrintPairings() // return all matches as a string
+        {
+            string Pairings = "";
+            foreach (Match match in Matches)
+            {
+                Pairings += $"{match.Player1.Name} vs {match.Player2.Name}\n";
+            }
+            return Pairings;
+        }
+        public void UpdatePairing(Round CurrentRound, Player player1, Player player2, int table, int round) //manual override to create pairing
         {
             //add function to search and remove old pairings
-            Match newMatch = new Match(player1, player2); //create the new match
-            round.Matches.AddLast(newMatch);
+            Match newMatch = new Match(player1, player2, table, round); //create the new match
+            CurrentRound.Matches.Add(newMatch);
         }
-
     }
 }

@@ -9,19 +9,21 @@ namespace TourManager.Data
     public class Tournament
     {
         //attributes
-        public string Name {  get; set; }
+        public string Name { get; set; }
         public string Organizer { get; set; }
-        public DateTime? Date { get; set; }
+        public string? Date { get; set; }
         public List<Player> PlayerList { get; set; }
         public List<Round> RoundList { get; set; }
+        public int CurrentRound { get; set; }
         //constructor
-        public Tournament(string name, string organizer, DateTime? date)
+        public Tournament(string name, string organizer, string? date)
         {
             Name = name;
             Organizer = organizer;
             Date = date;
-            PlayerList = new List<Player> ();
-            RoundList = new List<Round> ();
+            PlayerList = new List<Player>();
+            RoundList = new List<Round>();
+            CurrentRound = 0;
         }
         //methods
         public void NewPlayer(string firstname, string lastname)
@@ -41,6 +43,15 @@ namespace TourManager.Data
         {
             PlayerList.Sort(new ComparePlayers()); //use IComparer class
         }
+        public void NewRound()
+        {
+            CurrentRound++;
+            Round newRound = new Round(CurrentRound);
+            RoundList.Add(newRound);
+            RankPlayers();
+            newRound.CreatePairings(PlayerList, CurrentRound);
+            Console.WriteLine(newRound.PrintPairings());
+        }
         public void PrintStandings()
         {
             RankPlayers();
@@ -48,12 +59,19 @@ namespace TourManager.Data
             foreach (Player p in PlayerList)
             {
                 p.UpdateScore();
-                Console.WriteLine($"{p.Name}\t{p.Score}\t{p.PrintRecords}");
+                Console.WriteLine($"{p.Name}\t{p.Score}\t{p.PrintRecords()}");
             }
+        }
+        public void ReportResult(int findround, int findtable, string winner)
+        {
+            Round round = RoundList[findround];
+            Match match = round.Matches[findtable];
+            match.EnterResult(winner);
+            RankPlayers();
         }
         public bool IsEmpty()
         {
-            if ( Organizer == null && Date == null)
+            if (Organizer == null && Date == null)
                 return true;
             else
                 return false;

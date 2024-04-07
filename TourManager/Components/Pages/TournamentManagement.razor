@@ -32,7 +32,7 @@
     //new tournament info
     public string TournamentName;
     public string Organizer;
-    public DateTime Date;
+    public string Date;
     //string to contain error massage
     private string errorMessage = "Tournament Created";
     //Check for special characters
@@ -56,7 +56,7 @@
                     StateContainer.currentTournament = new Tournament(TournamentName, Organizer, Date);
                     TournamentName = ""; // Clear the input field after adding the player list
                     Organizer = "";
-                    Date = DateTime.Today;
+                    Date = DateTime.Today.ToString("yyyyMMdd");
                 }
                 else
                 {
