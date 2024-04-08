@@ -16,11 +16,11 @@ namespace TourManager.Data
         public List<Round> RoundList { get; set; }
         public int CurrentRound { get; set; }
         //constructor
-        public Tournament(string name, string organizer, string? date)
+        public Tournament(string name, string organizer)
         {
             Name = name;
             Organizer = organizer;
-            Date = date;
+            Date = DateTime.Today.ToString("yyyyMMdd");
             PlayerList = new List<Player>();
             RoundList = new List<Round>();
             CurrentRound = 0;
@@ -50,7 +50,6 @@ namespace TourManager.Data
             RoundList.Add(newRound);
             RankPlayers();
             newRound.CreatePairings(PlayerList, CurrentRound);
-            Console.WriteLine(newRound.PrintPairings());
         }
         public void PrintStandings()
         {

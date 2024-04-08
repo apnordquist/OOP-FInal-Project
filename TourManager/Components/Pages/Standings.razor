@@ -55,7 +55,7 @@
     //add print method
     public void Print()
     {
-        string filename = "TourManager" + StateContainer.currentTournament.Date + ".txt";
+        string filename = "TourManager" + StateContainer.currentTournament.Date + ".txt"; //fix save location
         string header = $"{"Name":25} {"Score":25} {"Wins":25} {"Draws":25} {"Losses":25}";
         File.WriteAllText(filename, header);
         foreach (Player player in StateContainer.currentTournament.PlayerList)

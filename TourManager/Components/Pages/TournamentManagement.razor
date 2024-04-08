@@ -16,13 +16,24 @@
                 <!-- Input creating a new tournament -->
                 <input type="text" class="form-control" @bind="TournamentName" placeholder="Tournamenet" />
                 <input type="text" class="form-control" @bind="Organizer" placeholder="Organizer" />
-                <input type="datetime" class="form-control" @bind="Date" placeholder="Today" />
+            </div>
+            <div class="input-group mb-3">
                 <!-- Button to create -->
-                <button class="btn btn-primary" type="button" @onclick="Create">Start a new Tournament</button>
+                <button class="btn btn-primary" type="button" @onclick="Create">New Tournament</button>
                 <!-- Button to load -->
-                <button class="btn btn-primary" type="button" @onclick="Load">Load Exisitng Tournament</button>
+                <button class="btn btn-primary" type="button" @onclick="Load">Load Tournament</button>
                 <!-- Button to save -->
-                <button class="btn btn-primary" type="button" @onclick="Save">Save Current Tournamment</button>
+                <button class="btn btn-primary" type="button" @onclick="Save">Save Tournamment</button>
+            </div>
+            <br />
+            <!-- Round Overview and Creation -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label style="font-weight: bold;">Current Round: @RoundCounter</label>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary" type="button" @onclick="NewRound">New Round</button>
             </div>
         </div>
     </div>
@@ -33,8 +44,9 @@
     public string TournamentName;
     public string Organizer;
     public string Date;
+    public int RoundCounter = 0;
     //string to contain error massage
-    private string errorMessage = "Tournament Created";
+    private string errorMessage = "Tournament Not Created";
     //Check for special characters
     private bool HasSpecialChars(string String)
     {
@@ -52,11 +64,12 @@
                 if (HasSpecialChars(TournamentName) == false)
                 {
                     // Create a new tournament with the input text
-                    // Save tourname to state container
-                    StateContainer.currentTournament = new Tournament(TournamentName, Organizer, Date);
+                    // Save tournament to state container
+                    StateContainer.currentTournament = new Tournament(TournamentName, Organizer);
                     TournamentName = ""; // Clear the input field after adding the player list
                     Organizer = "";
                     Date = DateTime.Today.ToString("yyyyMMdd");
+                    RoundCounter = 0;
                 }
                 else
                 {
@@ -87,5 +100,19 @@
         var contents = File.ReadAllText(path);
         var savedTournament = JsonSerializer.Deserialize<Tournament>(contents);
     }
+    //start new round
+    //create round counter
+    private async Task NewRound()
+    {
+        if (!StateContainer.currentTournament.PlayerList.Any())
+        {
+            RoundCounter++;
+            StateContainer.currentTournament.NewRound();
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("No PLayers", "No Players are registered", "OK");
+        }
 
+    }
 }

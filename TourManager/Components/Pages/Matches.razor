@@ -1,8 +1,69 @@
 ﻿@page "/matches"
 
+@using TourManager.Data
+@using Microsoft.Maui.Storage
+@using System.IO
+@using System.Text.Json
+@inject StateContainer StateContainer
+@inject IJSRuntime JSRuntime
+
 <h1>Matches</h1>
 <h2>Round #</h2>
 
+<!-- Get Round -->
+<div class="row">
+    <div class="col-md-3">
+        <label style="font-weight: bold;">Enter Round Number</label>
+    </div>
+    <div class="col-md-4">
+        <input placeholder="Round" @bind="@RoundNumber" class="form-control" />
+    </div>
+</div>
+<!-- Get Button -->
+<div class="col-md-2">
+    <button @onclick="GetRound" class="btn btn-outline-success">Find Matches</button>
+</div>
+<br />
+<!-- Show matches -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Need Heading and format as a table -->
+            <div class="form-check">
+                <!-- Label for which table they are playing at -->
+                <label class="form-check-label">Table</label>
+                <!-- Label for player 1 -->
+                <label class="form-check-label">PLayer 1</label>
+                <!-- Label for vs -->
+                <label class="form-check-label">vs</label>
+                <!-- Label for player 2 -->
+                <label class="form-check-label">Player 2</label>
+            </div>
+            <!-- Display players -->
+            @foreach (var Match in RoundSelected.Matches)
+            {
+                <div class="form-check">
+                    <!-- Label for displaying table number -->
+                    <label class="form-check-label">@Match.Table</label>
+                    <!-- Label for displaying player 1 -->
+                    <label class="form-check-label">@Match.Player1</label>
+                    <!-- hold for bs -->
+                    <label class="form-check-label">vs</label>
+                    <!-- Label for displaying player 2 -->
+                    <label class="form-check-label">@Match.Player2</label>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
 @code {
-    //
+    //variables
+    public int RoundNumber;
+    public Round RoundSelected; 
+    //methods
+    public async void GetRound()
+    {
+        RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber];
+    }
 }
