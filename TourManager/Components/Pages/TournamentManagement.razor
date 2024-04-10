@@ -104,14 +104,14 @@
     //create round counter
     private async Task NewRound()
     {
-        if (!StateContainer.currentTournament.PlayerList.Any())
+        if (StateContainer.currentTournament.PlayerList.Any())
         {
             RoundCounter++;
             StateContainer.currentTournament.NewRound();
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("No PLayers", "No Players are registered", "OK");
+            await App.Current.MainPage.DisplayAlert("No Players", "No Players are registered", "OK");
         }
 
     }

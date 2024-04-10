@@ -26,30 +26,30 @@ namespace TourManager.Data
                             PlayerList.Add(by); //add a 'by' for one unmatched player
                         }*/
             List<Player> Finished = new List<Player>(); //players already in a pairing
+            int table = 0; //starting table
             for (int i = 0; i < PlayerList.Count; i++) // count by 2 for each pairing
             {
                 Player current = PlayerList[i];
-                int table = 0;
                 if (!Finished.Contains(current))
                 {
                     for (int j = i + 1; j < PlayerList.Count; j++) //loop through players
                     {
                         if (current.Opponents.First == null) //if list is empty
                         {
+                            table++;
                             Match pairing = new Match(current, PlayerList[j], round, table); //new match
                             current.Opponents.AddLast(PlayerList[j]); //add to past opponent
                             Matches.Add(pairing); //add to list
                             Finished.Add(PlayerList[j]); //add to finished to not pair again
-                            table++;
                             break;
                         }
                         if (!current.Opponents.Contains(PlayerList[j])) //if not previous opponents
                         {
+                            table++;
                             Match pairing = new Match(current, PlayerList[j], round, table); //new match
                             current.Opponents.AddLast(PlayerList[j]); //add to past opponent
                             Matches.Add(pairing); //add to list
                             Finished.Add(PlayerList[j]); //add to finished to not pair again
-                            table++;
                             break;
                         }
                     }

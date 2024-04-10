@@ -33,7 +33,7 @@
                 <!-- Label for which table they are playing at -->
                 <label class="form-check-label">Table</label>
                 <!-- Label for player 1 -->
-                <label class="form-check-label">PLayer 1</label>
+                <label class="form-check-label">Player 1</label>
                 <!-- Label for vs -->
                 <label class="form-check-label">vs</label>
                 <!-- Label for player 2 -->
@@ -46,11 +46,11 @@
                     <!-- Label for displaying table number -->
                     <label class="form-check-label">@Match.Table</label>
                     <!-- Label for displaying player 1 -->
-                    <label class="form-check-label">@Match.Player1</label>
+                    <label class="form-check-label">@Match.Player1.Name</label>
                     <!-- hold for bs -->
                     <label class="form-check-label">vs</label>
                     <!-- Label for displaying player 2 -->
-                    <label class="form-check-label">@Match.Player2</label>
+                    <label class="form-check-label">@Match.Player2.Name</label>
                 </div>
             }
         </div>
@@ -60,7 +60,7 @@
 @code {
     //variables
     public int RoundNumber;
-    public Round RoundSelected; 
+    public Round RoundSelected = new Round(0); 
     //methods
     public async void GetRound()
     {
