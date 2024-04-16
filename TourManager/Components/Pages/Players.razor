@@ -26,13 +26,17 @@
             <!-- Display players -->
             @foreach (var Player in StateContainer.currentTournament.PlayerList)
             {
-                <div class="form-check">
+                <div class="row">
+                    <div class="col-md-6">
                     <!-- Label for displaying player name -->
                     <label class="form-check-label">@Player.Name</label>
+                    </div>
+                        <div class="col">
                     <!-- Button for editing players -->
                     <button class="btn btn-danger btn-sm ms-2" @onclick="() => EditPlayer(Player, newPlayerfirstname, newPlayerlastname)">Edit</button>
                     <!-- Button for deleting players -->
                     <button class="btn btn-danger btn-sm ms-2" @onclick="() => RemovePlayer(StateContainer.currentTournament.PlayerList, Player)">Remove</button>
+                    </div>
                 </div>
             }
         </div>

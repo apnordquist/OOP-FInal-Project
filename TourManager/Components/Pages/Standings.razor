@@ -10,32 +10,60 @@
     <div class="row">
         <div class="col-md-6">
             <!-- Need Heading and format as a table -->
-            <div class="form-check">
+            <div class="row">
+                <div class="col">
+                    <!-- Label for displaying placement -->
+                    <label class="form-check-label">Position</label>
+                </div>
+            <div class="col">
                 <!-- Label for displaying player name -->
                 <label class="form-check-label">Name</label>
+            </div>
+            <div class="col">
                 <!-- Label for displaying player Score -->
                 <label class="form-check-label">Score</label>
+            </div>
+            <div class="col">
                 <!-- Label for displaying player Wins -->
                 <label class="form-check-label">Wins</label>
+            </div>
+            <div class="col">
                 <!-- Label for displaying player Draws -->
                 <label class="form-check-label">Draws</label>
+            </div>
+            <div class="col">
                 <!-- Label for displaying player Losses -->
                 <label class="form-check-label">Losses</label>
+            </div>
             </div>
             <!-- Display players -->
             @foreach (var Player in StateContainer.currentTournament.PlayerList)
             {
-                <div class="form-check">
+                <div class="row">
+                    <div class="col">
+                        <!-- Label for displaying placement -->
+                        <label class="form-check-label">hold</label>
+                    </div>
+                    <div class="col">
                     <!-- Label for displaying player name -->
                     <label class="form-check-label">@Player.Name</label>
+                    </div>
+                    <div class="col">
                     <!-- Label for displaying player Score -->
                     <label class="form-check-label">@Player.Score</label>
+                    </div>
+                    <div class="col">
                     <!-- Label for displaying player Wins -->
                     <label class="form-check-label">@Player.Wins</label>
+                    </div>
+                    <div class="col">
                     <!-- Label for displaying player Draws -->
                     <label class="form-check-label">@Player.Draws</label>
+                    </div>
+                    <div class="col">
                     <!-- Label for displaying player Losses -->
                     <label class="form-check-label">@Player.Losses</label>
+                    </div>
                 </div>
             }
             <!-- Button for update standings -->

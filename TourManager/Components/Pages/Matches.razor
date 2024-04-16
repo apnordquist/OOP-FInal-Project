@@ -25,45 +25,70 @@
 </div>
 <br />
 <!-- Show matches -->
-<div class="container mt-4">
+<div class="container">
     <div class="row">
-        <div class="col-md-6">
             <!-- Need Heading and format as a table -->
-            <div class="form-check">
+            <div class="col">
                 <!-- Label for which table they are playing at -->
-                <label class="form-check-label">Table</label>
-                <!-- Label for player 1 -->
-                <label class="form-check-label">Player 1</label>
-                <!-- Label for vs -->
-                <label class="form-check-label">vs</label>
-                <!-- Label for player 2 -->
-                <label class="form-check-label">Player 2</label>
+                <label>Table</label>
             </div>
-            <!-- Display players -->
-            @foreach (var Match in RoundSelected.Matches)
-            {
-                <div class="form-check">
-                    <!-- Label for displaying table number -->
-                    <label class="form-check-label">@Match.Table</label>
-                    <!-- Label for displaying player 1 -->
-                    <label class="form-check-label">@Match.Player1.Name</label>
-                    <!-- hold for bs -->
-                    <label class="form-check-label">vs</label>
-                    <!-- Label for displaying player 2 -->
-                    <label class="form-check-label">@Match.Player2.Name</label>
-                </div>
-            }
-        </div>
+            <div class="col">
+                <!-- Label for player 1 -->
+                <label>Player 1</label>
+            </div>
+            <div class="col">
+                            <!-- Label for vs -->
+            <label>vs</label>
+            </div>
+            <div class="col">
+                            <!-- Label for player 2 -->
+                <label>Player 2</label>
+            </div>
+            <div class="col">
+                <label>Report</label>
+            </div>
     </div>
+    <!-- Display players -->
+    @foreach (var Match in RoundSelected.Matches)
+    {
+        <div class="row">
+            <div class="col">
+                <!-- Label for displaying table number -->
+                <label>@Match.Table</label>
+            </div>
+            <div class="col">
+                <!-- Label for displaying player 1 -->
+                <label>@Match.Player1.Name</label>
+            </div>
+            <div class="col">
+                <!-- hold for vs -->
+                <label class="form-check-label">vs</label>
+            </div>
+            <div class="col">
+                <!-- Label for displaying player 2 -->
+                <label>@Match.Player2.Name</label>
+            </div>
+            <div class="col">
+                <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">P1 win</button>
+                <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">P2 win</button>
+            </div>
+        </div>
+    }
 </div>
 
 @code {
     //variables
+        public string P1 = "P1";
+        public string P2 = "P2";
     public int RoundNumber;
-    public Round RoundSelected = new Round(0); 
+    public Round RoundSelected = new Round(1); 
     //methods
     public async void GetRound()
     {
         RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber];
+    }
+    public async void Report(Match match, string winner)
+    {
+        match.EnterResult(winner);
     }
 }

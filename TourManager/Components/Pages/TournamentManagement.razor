@@ -14,16 +14,12 @@
         <div class="col-md-6">
             <div class="input-group mb-3">
                 <!-- Input creating a new tournament -->
-                <input type="text" class="form-control" @bind="TournamentName" placeholder="Tournamenet" />
+                <input type="text" class="form-control" @bind="TournamentName" placeholder="Tournament" />
                 <input type="text" class="form-control" @bind="Organizer" placeholder="Organizer" />
             </div>
             <div class="input-group mb-3">
                 <!-- Button to create -->
                 <button class="btn btn-primary" type="button" @onclick="Create">New Tournament</button>
-                <!-- Button to load -->
-                <button class="btn btn-primary" type="button" @onclick="Load">Load Tournament</button>
-                <!-- Button to save -->
-                <button class="btn btn-primary" type="button" @onclick="Save">Save Tournamment</button>
             </div>
             <br />
             <!-- Round Overview and Creation -->
@@ -82,23 +78,6 @@
             errorMessage = e.Message;
             await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
         }
-    }
-    //save function    
-    private async Task Save()
-    {
-        var contents = JsonSerializer.Serialize(StateContainer.currentTournament);
-        var path = Path.Combine(FileSystem.AppDataDirectory, "TourManager.json");
-        File.WriteAllText(path, contents);
-        await App.Current.MainPage.DisplayAlert("Tournament Saved", $"Tournament saved to {path}", "OK");
-    }
-    //load function
-    private void Load()
-    {
-        var path = Path.Combine(FileSystem.AppDataDirectory, "todo.json");
-        if (!File.Exists(path))
-            return;
-        var contents = File.ReadAllText(path);
-        var savedTournament = JsonSerializer.Deserialize<Tournament>(contents);
     }
     //start new round
     //create round counter
