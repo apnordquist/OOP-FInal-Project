@@ -39,10 +39,11 @@
             <!-- Display players -->
             @foreach (var Player in StateContainer.currentTournament.PlayerList)
             {
+                Rank++;
                 <div class="row">
                     <div class="col">
                         <!-- Label for displaying placement -->
-                        <label class="form-check-label">hold</label>
+                        <label class="form-check-label">@Rank</label>
                     </div>
                     <div class="col">
                     <!-- Label for displaying player name -->
@@ -75,9 +76,11 @@
 </div>
 
 @code {
+    public int Rank = 0;
     //add update method
     public void Update()
     {
+        Rank = 0; //reset rank
         StateContainer.currentTournament.RankPlayers();
     }
     //add print method

@@ -20,29 +20,69 @@
             <div class="input-group mb-3">
                 <!-- Button to create -->
                 <button class="btn btn-primary" type="button" @onclick="Create">New Tournament</button>
-            </div>
+                <!-- Buttons to manage -->
+                <button class="btn btn-primary" @onclick="Save">Save</button>
+                <button class="btn btn-primary" @onclick="Load">Load</button>
             <br />
-            <!-- Round Overview and Creation -->
-            <div class="row">
-                <div class="col-md-3">
-                    <label style="font-weight: bold;">Current Round: @RoundCounter</label>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary" type="button" @onclick="NewRound">New Round</button>
             </div>
         </div>
     </div>
 </div>
+
+<h1 class="mt-6">Particpants</h1>
+
+<p>Current Tournament: <b>@StateContainer.currentTournament.Name</b></p>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <!-- Input field for adding new player -->
+                <input type="text" class="form-control" @bind="newPlayerfirstname" placeholder="First Name" />
+                <input type="text" class="form-control" @bind="newPlayerlastname" placeholder="Last Name" />
+                <!-- Button to add new player -->
+                <button class="btn btn-primary" type="button" @onclick="AddPlayer">Register New Player</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Registered</h2>
+            <!-- Display players -->
+            @foreach (var Player in StateContainer.currentTournament.PlayerList)
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Label for displaying player name -->
+                        <label class="form-check-label">@Player.Name</label>
+                    </div>
+                    <div class="col">
+                        <!-- Button for editing players -->
+                        <button class="btn btn-danger btn-sm ms-2" @onclick="() => EditPlayer(Player, newPlayerfirstname, newPlayerlastname)">Edit</button>
+                        <!-- Button for deleting players -->
+                        <button class="btn btn-danger btn-sm ms-2" @onclick="() => RemovePlayer(StateContainer.currentTournament.PlayerList, Player)">Remove</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
 
 @code {
     //new tournament info
     public string TournamentName;
     public string Organizer;
     public string Date;
-    public int RoundCounter = 0;
-    //string to contain error massage
-    private string errorMessage = "Tournament Not Created";
+    // String variables to store the first and last name of the new player
+    private string newPlayerfirstname = "";
+    private string newPlayerlastname = "";
+    //list for saved or deleted players
+    private List<Player> SavedPlayers = new List<Player>();
+    //error message
+    public string errorMessage = "Entry cannot contain special characters";
+
     //Check for special characters
     private bool HasSpecialChars(string String)
     {
@@ -65,7 +105,6 @@
                     TournamentName = ""; // Clear the input field after adding the player list
                     Organizer = "";
                     Date = DateTime.Today.ToString("yyyyMMdd");
-                    RoundCounter = 0;
                 }
                 else
                 {
@@ -79,19 +118,67 @@
             await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
         }
     }
-    //start new round
-    //create round counter
-    private async Task NewRound()
+    // Function to add new player
+    private async void AddPlayer()
     {
-        if (StateContainer.currentTournament.PlayerList.Any())
+        // Check if the input field is not empty
+        try
         {
-            RoundCounter++;
-            StateContainer.currentTournament.NewRound();
+            if (!string.IsNullOrWhiteSpace(newPlayerfirstname))
+            {
+                if (HasSpecialChars(newPlayerfirstname) == false)
+                {
+                    // Create a new player with the input text and add it to the list
+                    StateContainer.currentTournament.PlayerList.Add(new Player(newPlayerfirstname, newPlayerlastname));
+                    newPlayerfirstname = ""; // Clear the input field after adding the player list
+                    newPlayerlastname = "";
+                }
+                else
+                {
+                    throw new SpecialCharException("Items cannot contain special characters (@ # $ %)");
+                }
+            }
         }
-        else
+        catch (SpecialCharException e) //catch the exception
         {
-            await App.Current.MainPage.DisplayAlert("No Players", "No Players are registered", "OK");
+            errorMessage = e.Message;
+            await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
         }
+    }
+    private async void EditPlayer(Player player, string newfirstname, string newlastname)
+    {
+        {
+            // update first and last name
+            player.FirstName = newfirstname;
+            player.LastName = newlastname;
+            //need to change to new dialog box
+        }
+    }
+    private async void RemovePlayer(List<Player> playerlist, Player player)
+    {
+        {
+            // need to add confirmation message
+            // Remove the player from list
+            playerlist.Remove(player);
+            // Add player to a saved list for future use or records
+            SavedPlayers.Add(player);
+        }
+    }
+    private async Task Save()
+    {
+        var contents = JsonSerializer.Serialize(StateContainer.currentTournament);
+        var path = Path.Combine(FileSystem.AppDataDirectory, "tournament.json");
+        File.WriteAllText(path, contents);
+        await App.Current.MainPage.DisplayAlert("Tournament Saved", $"Tournament has been saved to {path}", "OK");
+    }
 
+    private void Load()
+    {
+        var path = Path.Combine(FileSystem.AppDataDirectory, "tournament.json");
+        if (!File.Exists(path))
+            return;
+        var contents = File.ReadAllText(path);
+        var savedTournament = JsonSerializer.Deserialize<Tournament>(contents);
+        StateContainer.currentTournament = savedTournament;
     }
 }

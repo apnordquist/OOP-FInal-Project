@@ -10,13 +10,23 @@
 <h1>Matches</h1>
 <h2>Round #</h2>
 
+<!-- Round Overview and Creation -->
+<div class="row">
+    <div class="col-md-3">
+        <label style="font-weight: bold;">Current Round: @StateContainer.currentTournament.CurrentRound</label>
+    </div>
+</div>
+<div>
+    <button class="btn btn-primary" type="button" @onclick="NewRound">New Round</button>
+</div>
+
 <!-- Get Round -->
 <div class="row">
     <div class="col-md-3">
         <label style="font-weight: bold;">Enter Round Number</label>
     </div>
     <div class="col-md-4">
-        <input placeholder="Round" @bind="@RoundNumber" class="form-control" />
+        <input placeholder="@StateContainer.currentTournament.CurrentRound" @bind="@RoundNumber" class="form-control" />
     </div>
 </div>
 <!-- Get Button -->
@@ -69,8 +79,9 @@
                 <label>@Match.Player2.Name</label>
             </div>
             <div class="col">
-                <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">P1 win</button>
-                <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">P2 win</button>
+                <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">@Match.Player1.FirstName win</button>
+                <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">@Match.Player2.FirstName win</button>
+                <button @onclick="() => Report(Match, Draw)" class="btn btn-outline-success">Draw</button>
             </div>
         </div>
     }
@@ -78,17 +89,31 @@
 
 @code {
     //variables
-        public string P1 = "P1";
-        public string P2 = "P2";
+    public string P1 = "P1";
+    public string P2 = "P2";
+    public string Draw = "Draw";
     public int RoundNumber;
-    public Round RoundSelected = new Round(1); 
+    public Round RoundSelected = new Round(0); 
     //methods
     public async void GetRound()
     {
-        RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber];
+        RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber-1];
     }
     public async void Report(Match match, string winner)
     {
         match.EnterResult(winner);
+    }
+    //start new round
+    //create round counter
+    private async Task NewRound()
+    {
+        if (StateContainer.currentTournament.PlayerList.Any())
+        {
+            StateContainer.currentTournament.NewRound();
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("No Players", "No Players are registered", "OK");
+        }
     }
 }

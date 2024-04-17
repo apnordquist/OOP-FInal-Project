@@ -32,11 +32,12 @@ namespace TourManager.Data
                 Player current = PlayerList[i];
                 if (!Finished.Contains(current))
                 {
+                    table++;
                     for (int j = i + 1; j < PlayerList.Count; j++) //loop through players
                     {
                         if (current.Opponents.First == null) //if list is empty
                         {
-                            table++;
+                            
                             Match pairing = new Match(current, PlayerList[j], round, table); //new match
                             current.Opponents.AddLast(PlayerList[j]); //add to past opponent
                             Matches.Add(pairing); //add to list
@@ -45,7 +46,7 @@ namespace TourManager.Data
                         }
                         if (!current.Opponents.Contains(PlayerList[j])) //if not previous opponents
                         {
-                            table++;
+                            
                             Match pairing = new Match(current, PlayerList[j], round, table); //new match
                             current.Opponents.AddLast(PlayerList[j]); //add to past opponent
                             Matches.Add(pairing); //add to list
