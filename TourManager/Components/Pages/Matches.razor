@@ -19,6 +19,7 @@
 <div>
     <button class="btn btn-primary" type="button" @onclick="NewRound">New Round</button>
 </div>
+<br/>
 
 <!-- Get Round -->
 <div class="row">
@@ -34,6 +35,7 @@
     <button @onclick="GetRound" class="btn btn-outline-success">Find Matches</button>
 </div>
 <br />
+
 <!-- Show matches -->
 <div class="container">
     <div class="row">
@@ -54,7 +56,7 @@
                             <!-- Label for player 2 -->
                 <label>Player 2</label>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <label>Report</label>
             </div>
     </div>
@@ -78,11 +80,20 @@
                 <!-- Label for displaying player 2 -->
                 <label>@Match.Player2.Name</label>
             </div>
-            <div class="col">
-                <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">@Match.Player1.FirstName win</button>
-                <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">@Match.Player2.FirstName win</button>
-                <button @onclick="() => Report(Match, Draw)" class="btn btn-outline-success">Draw</button>
-            </div>
+            @if (Match.Reported == false)
+                {
+                    <div class="col-md-6">
+                        <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">@Match.Player1.FirstName win</button>
+                        <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">@Match.Player2.FirstName win</button>
+                        <button @onclick="() => Report(Match, Draw)" class="btn btn-outline-success">Draw</button>
+                    </div>
+                }
+            else
+                {
+                    <div class="col-md-6">
+                        <p>Results Entered</p>
+                    </div>
+                }
         </div>
     }
 </div>
@@ -97,7 +108,15 @@
     //methods
     public async void GetRound()
     {
-        RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber-1];
+        try
+        {
+            RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber-1];
+        }
+        catch (Exception e)
+        {
+            string errorMessage = "No matches found.";
+            await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
+        }
     }
     public async void Report(Match match, string winner)
     {
@@ -110,6 +129,8 @@
         if (StateContainer.currentTournament.PlayerList.Any())
         {
             StateContainer.currentTournament.NewRound();
+            RoundNumber = StateContainer.currentTournament.CurrentRound;
+            GetRound();
         }
         else
         {

@@ -25,6 +25,9 @@
                 <button class="btn btn-primary" @onclick="Load">Load</button>
             <br />
             </div>
+            <div>
+                <p role="status">@statusMessage</p>
+            </div>
         </div>
     </div>
 </div>
@@ -59,7 +62,7 @@
                     </div>
                     <div class="col">
                         <!-- Button for editing players -->
-                        <button class="btn btn-danger btn-sm ms-2" @onclick="() => EditPlayer(Player, newPlayerfirstname, newPlayerlastname)">Edit</button>
+                        <button class="btn btn-danger btn-sm ms-2" @onclick="() => EditPlayer(Player)">Edit</button>
                         <!-- Button for deleting players -->
                         <button class="btn btn-danger btn-sm ms-2" @onclick="() => RemovePlayer(StateContainer.currentTournament.PlayerList, Player)">Remove</button>
                     </div>
@@ -78,10 +81,10 @@
     // String variables to store the first and last name of the new player
     private string newPlayerfirstname = "";
     private string newPlayerlastname = "";
-    //list for saved or deleted players
-    private List<Player> SavedPlayers = new List<Player>();
     //error message
     public string errorMessage = "Entry cannot contain special characters";
+    //statuses
+    public string statusMessage = "";
 
     //Check for special characters
     private bool HasSpecialChars(string String)
@@ -105,6 +108,7 @@
                     TournamentName = ""; // Clear the input field after adding the player list
                     Organizer = "";
                     Date = DateTime.Today.ToString("yyyyMMdd");
+                    statusMessage = "Tournament Created";
                 }
                 else
                 {
@@ -145,23 +149,21 @@
             await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
         }
     }
-    private async void EditPlayer(Player player, string newfirstname, string newlastname)
+    private async void EditPlayer(Player player)
     {
-        {
-            // update first and last name
-            player.FirstName = newfirstname;
-            player.LastName = newlastname;
-            //need to change to new dialog box
-        }
+        string newFirst = await JSRuntime.InvokeAsync<string>("prompt","Enter First Name:",$"{player.FirstName}");
+        string newLast = await JSRuntime.InvokeAsync<string>("prompt", "Enter First Name:", $"{player.LastName}");
+        player.FirstName = newFirst;
+        player.LastName = newLast; 
     }
     private async void RemovePlayer(List<Player> playerlist, Player player)
     {
+        // confirmation message
+        bool confirmation = await JSRuntime.InvokeAsync<bool>("confirm", $"Remove {player.Name}?");
+        if (confirmation == true)
         {
-            // need to add confirmation message
             // Remove the player from list
             playerlist.Remove(player);
-            // Add player to a saved list for future use or records
-            SavedPlayers.Add(player);
         }
     }
     private async Task Save()
@@ -170,6 +172,7 @@
         var path = Path.Combine(FileSystem.AppDataDirectory, "tournament.json");
         File.WriteAllText(path, contents);
         await App.Current.MainPage.DisplayAlert("Tournament Saved", $"Tournament has been saved to {path}", "OK");
+        statusMessage = "Tournament saved";
     }
 
     private void Load()
