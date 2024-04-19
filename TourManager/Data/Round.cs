@@ -20,11 +20,11 @@ namespace TourManager.Data
         //methods
         public void CreatePairings(List<Player> PlayerList, int round) //creates a number of matches for the round
         {
-            /*            if (PlayerList.Count % 2 != 0) //make sure list is even
-                        {
-                            Player by = new Player("no opponent", "found");
-                            PlayerList.Add(by); //add a 'by' for one unmatched player
-                        }*/
+            if (PlayerList.Count % 2 != 0) //make sure list is even
+            {
+                Player by = new Player("", "bye");
+                PlayerList.Add(by); //add a 'bye' for one unmatched player, will count as a free win
+            }
             List<Player> Finished = new List<Player>(); //players already in a pairing
             int table = 0; //starting table
             for (int i = 0; i < PlayerList.Count; i++) // count by 2 for each pairing
@@ -37,7 +37,6 @@ namespace TourManager.Data
                     {
                         if (current.Opponents.First == null) //if list is empty
                         {
-                            
                             Match pairing = new Match(current, PlayerList[j], round, table); //new match
                             current.Opponents.AddLast(PlayerList[j]); //add to past opponent
                             Matches.Add(pairing); //add to list
@@ -46,13 +45,12 @@ namespace TourManager.Data
                         }
                         if (!current.Opponents.Contains(PlayerList[j])) //if not previous opponents
                         {
-                            
                             Match pairing = new Match(current, PlayerList[j], round, table); //new match
                             current.Opponents.AddLast(PlayerList[j]); //add to past opponent
                             Matches.Add(pairing); //add to list
                             Finished.Add(PlayerList[j]); //add to finished to not pair again
                             break;
-                        }
+                        } 
                     }
                 }
             }

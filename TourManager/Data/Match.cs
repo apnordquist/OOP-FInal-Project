@@ -16,17 +16,29 @@ namespace TourManager.Data
         public int Table { get; set; }
         public bool Reported { get; set; }
         //constructor
-        public Match(Player player1, Player player2, int table, int round)
+        //default
+        public Match(Player player1, Player player2, int round, int table)
         {
             Player1 = player1;
             Player2 = player2;
-            Table = table;
             Round = round;
+            Table = table;
             Reported = false;
+        }
+        //for database
+        public Match(Player player1, Player player2, int round, int table, string result)
+        {
+            Player1 = player1;
+            Player2 = player2;
+            Round = round;
+            Table = table;
+            Result = result;
+            EnterResult(result);
         }
         //method
         public void EnterResult(string winner)
         {
+            Result = winner; //store in object
             if (Reported == false)
             {
                 //report match

@@ -756,6 +756,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -3331,6 +3347,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -5898,6 +5930,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -8469,6 +8517,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -11036,6 +11100,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -13607,6 +13687,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -16174,6 +16270,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -18745,6 +18857,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -21290,6 +21418,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -22079,6 +22223,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -22860,6 +23020,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -23645,6 +23821,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -24426,6 +24618,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -25211,6 +25419,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -25992,6 +26216,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -26777,6 +27017,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -27558,6 +27814,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -28349,6 +28621,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -29130,6 +29418,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -29915,6 +30219,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -30696,6 +31016,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -31481,6 +31817,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -32264,6 +32616,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -33045,6 +33413,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -33973,6 +34357,22 @@
           }
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -34877,6 +35277,22 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -35773,6 +36189,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -36673,6 +37105,22 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -37569,6 +38017,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -38469,6 +38933,22 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.IO.Pipelines/8.0.0": {
         "type": "package",
         "compile": {
@@ -39365,6 +39845,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -40269,6 +40765,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "MySqlConnector/2.3.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.IO.Pipelines/8.0.0": {
@@ -42853,6 +43365,35 @@
         "tools/x86/GenXbf.dll"
       ]
     },
+    "MySqlConnector/2.3.6": {
+      "sha512": "DyWErA3jFsJAAn4x6ha09cmmrw/zvjM0/lYUXzV45f0CiY0ZCIwDHGb7wMsIlXr9JaCBOp4i3uZF/HumEPeV+A==",
+      "type": "package",
+      "path": "mysqlconnector/2.3.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/MySqlConnector.dll",
+        "lib/net462/MySqlConnector.xml",
+        "lib/net471/MySqlConnector.dll",
+        "lib/net471/MySqlConnector.xml",
+        "lib/net48/MySqlConnector.dll",
+        "lib/net48/MySqlConnector.xml",
+        "lib/net6.0/MySqlConnector.dll",
+        "lib/net6.0/MySqlConnector.xml",
+        "lib/net7.0/MySqlConnector.dll",
+        "lib/net7.0/MySqlConnector.xml",
+        "lib/net8.0/MySqlConnector.dll",
+        "lib/net8.0/MySqlConnector.xml",
+        "lib/netstandard2.0/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.xml",
+        "lib/netstandard2.1/MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlConnector.xml",
+        "logo.png",
+        "mysqlconnector.2.3.6.nupkg.sha512",
+        "mysqlconnector.nuspec"
+      ]
+    },
     "System.IO.Pipelines/8.0.0": {
       "sha512": "FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
       "type": "package",
@@ -45034,27 +45575,31 @@
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.0"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.0",
+      "MySqlConnector >= 2.3.6"
     ],
     "net8.0-ios17.0": [
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.3",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.0"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.0",
+      "MySqlConnector >= 2.3.6"
     ],
     "net8.0-maccatalyst17.0": [
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.3",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.0"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.0",
+      "MySqlConnector >= 2.3.6"
     ],
     "net8.0-windows10.0.19041": [
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.3",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
-      "Microsoft.Maui.Controls.Compatibility >= 8.0.3"
+      "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
+      "MySqlConnector >= 2.3.6"
     ]
   },
   "packageFolders": {
@@ -45139,6 +45684,10 @@
             "target": "Package",
             "version": "[8.0.0, )",
             "autoReferenced": true
+          },
+          "MySqlConnector": {
+            "target": "Package",
+            "version": "[2.3.6, )"
           }
         },
         "imports": [
@@ -45186,6 +45735,10 @@
             "target": "Package",
             "version": "[8.0.0, )",
             "autoReferenced": true
+          },
+          "MySqlConnector": {
+            "target": "Package",
+            "version": "[2.3.6, )"
           }
         },
         "imports": [
@@ -45233,6 +45786,10 @@
             "target": "Package",
             "version": "[8.0.0, )",
             "autoReferenced": true
+          },
+          "MySqlConnector": {
+            "target": "Package",
+            "version": "[2.3.6, )"
           }
         },
         "imports": [
@@ -45275,6 +45832,10 @@
           "Microsoft.Maui.Controls.Compatibility": {
             "target": "Package",
             "version": "[8.0.3, )"
+          },
+          "MySqlConnector": {
+            "target": "Package",
+            "version": "[2.3.6, )"
           }
         },
         "imports": [

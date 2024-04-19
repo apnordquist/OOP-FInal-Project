@@ -82,9 +82,13 @@
     private string newPlayerfirstname = "";
     private string newPlayerlastname = "";
     //error message
-    public string errorMessage = "Entry cannot contain special characters";
+    private string errorMessage = "Entry cannot contain special characters";
     //statuses
-    public string statusMessage = "";
+    private string statusMessage = "";
+    //database connection
+    private DatabaseConnection tournamentDatabase = new DatabaseConnection();
+    private DBmatch matchDatabase = new DBmatch();
+    private DBplayer playerDatabase = new DBplayer();
 
     //Check for special characters
     private bool HasSpecialChars(string String)
@@ -125,28 +129,35 @@
     // Function to add new player
     private async void AddPlayer()
     {
-        // Check if the input field is not empty
-        try
+        if (StateContainer.currentTournament.Name != "none")
         {
-            if (!string.IsNullOrWhiteSpace(newPlayerfirstname))
+            // Check if the input field is not empty
+            try
             {
-                if (HasSpecialChars(newPlayerfirstname) == false)
+                if (!string.IsNullOrWhiteSpace(newPlayerfirstname))
                 {
-                    // Create a new player with the input text and add it to the list
-                    StateContainer.currentTournament.PlayerList.Add(new Player(newPlayerfirstname, newPlayerlastname));
-                    newPlayerfirstname = ""; // Clear the input field after adding the player list
-                    newPlayerlastname = "";
-                }
-                else
-                {
-                    throw new SpecialCharException("Items cannot contain special characters (@ # $ %)");
+                    if (HasSpecialChars(newPlayerfirstname) == false)
+                    {
+                        // Create a new player with the input text and add it to the list
+                        StateContainer.currentTournament.PlayerList.Add(new Player(newPlayerfirstname, newPlayerlastname));
+                        newPlayerfirstname = ""; // Clear the input field after adding the player list
+                        newPlayerlastname = "";
+                    }
+                    else
+                    {
+                        throw new SpecialCharException("Items cannot contain special characters (@ # $ %)");
+                    }
                 }
             }
+            catch (SpecialCharException e) //catch the exception
+            {
+                errorMessage = e.Message;
+                await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
+            }
         }
-        catch (SpecialCharException e) //catch the exception
+        else
         {
-            errorMessage = e.Message;
-            await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
+            await JSRuntime.InvokeVoidAsync("alert", "Please create a new tournament");
         }
     }
     private async void EditPlayer(Player player)
@@ -168,20 +179,28 @@
     }
     private async Task Save()
     {
-        var contents = JsonSerializer.Serialize(StateContainer.currentTournament);
-        var path = Path.Combine(FileSystem.AppDataDirectory, "tournament.json");
-        File.WriteAllText(path, contents);
-        await App.Current.MainPage.DisplayAlert("Tournament Saved", $"Tournament has been saved to {path}", "OK");
-        statusMessage = "Tournament saved";
+        tournamentDatabase.Save(StateContainer.currentTournament.Name, StateContainer.currentTournament.Organizer, StateContainer.currentTournament.Date);
+        foreach (Player player in StateContainer.currentTournament.PlayerList)
+        {
+            playerDatabase.Save(player.PlayerID, player.FirstName, player.LastName, player.Wins, player.Draws, player.Losses, player.Score);
+        }
+        foreach (Round round in StateContainer.currentTournament.RoundList)
+        {
+            foreach (Match match in round.Matches)
+            {
+                matchDatabase.Save(match.Player1.PlayerID, match.Player2.PlayerID, match.Round, match.Table, match.Result);
+            }
+        }
+        statusMessage = "Tournament Saved";
     }
-
     private void Load()
     {
-        var path = Path.Combine(FileSystem.AppDataDirectory, "tournament.json");
-        if (!File.Exists(path))
-            return;
-        var contents = File.ReadAllText(path);
-        var savedTournament = JsonSerializer.Deserialize<Tournament>(contents);
-        StateContainer.currentTournament = savedTournament;
+        Tournament newTournament = tournamentDatabase.Load();
+        List<Player> newPlayerlist = playerDatabase.Load();
+        foreach (Player player in newPlayerlist)
+        {
+            newTournament.PlayerList.Add(player);
+        }
+        statusMessage = "Tournament Loaded";
     }
 }

@@ -9,6 +9,7 @@ namespace TourManager.Data
     public class Player
     {
         //attributes
+        public int PlayerID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Name;
@@ -17,13 +18,29 @@ namespace TourManager.Data
         public int Losses = 0;
         public LinkedList<Player>? Opponents;
         public int Score = 0; //combined value of wins, draws, and losses
+        Random rnd = new Random();
         //constructor
+        //default
         public Player(string firstname, string lastname)
         {
+            PlayerID = rnd.Next(1,1000);
             FirstName = firstname;
             LastName = lastname;
             Name = firstname + " " + lastname;
             Opponents = new LinkedList<Player>();
+        }
+        //for database
+        public Player(int id, string firstname, string lastname, int wins, int draws, int losses) 
+        {
+            PlayerID = id;
+            FirstName = firstname;
+            LastName = lastname;
+            Name = firstname + " " + lastname;
+            Opponents = new LinkedList<Player>();
+            Wins = wins;
+            Draws = draws;
+            Losses = losses;
+            UpdateScore();
         }
         //methods
         public string PrintRecords()

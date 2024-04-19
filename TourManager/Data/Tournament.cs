@@ -16,11 +16,23 @@ namespace TourManager.Data
         public List<Round> RoundList { get; set; }
         public int CurrentRound { get; set; }
         //constructor
+        //default
+
         public Tournament(string name, string organizer)
         {
             Name = name;
             Organizer = organizer;
             Date = DateTime.Today.ToString("yyyyMMdd");
+            PlayerList = new List<Player>();
+            RoundList = new List<Round>();
+            CurrentRound = 0;
+        }
+        //database
+        public Tournament(string name, string organizer, string date)
+        {
+            Name = name;
+            Organizer = organizer;
+            Date = date;
             PlayerList = new List<Player>();
             RoundList = new List<Round>();
             CurrentRound = 0;
@@ -56,10 +68,11 @@ namespace TourManager.Data
             RankPlayers();
             Console.WriteLine("Name\tPoints\tRecord");
             foreach (Player p in PlayerList)
-            {
-                p.UpdateScore();
-                Console.WriteLine($"{p.Name}\t{p.Score}\t{p.PrintRecords()}");
-            }
+                if (p.LastName != "bye")
+                {
+                    p.UpdateScore();
+                    Console.WriteLine($"{p.Name}\t{p.Score}\t{p.PrintRecords()}");
+                }
         }
         public void ReportResult(int findround, int findtable, string winner)
         {

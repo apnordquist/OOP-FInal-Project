@@ -40,32 +40,35 @@
             @foreach (var Player in StateContainer.currentTournament.PlayerList)
             {
                 Rank++;
-                <div class="row">
-                    <div class="col">
+                @if (Player.LastName != "bye")
+                {
+                    <div class="row">
+                        <div class="col">
                         <!-- Label for displaying placement -->
                         <label class="form-check-label">@Rank</label>
+                        </div>
+                        <div class="col">
+                        <!-- Label for displaying player name -->
+                        <label class="form-check-label">@Player.Name</label>
+                        </div>
+                        <div class="col">
+                        <!-- Label for displaying player Score -->
+                        <label class="form-check-label">@Player.Score</label>
+                        </div>
+                        <div class="col">
+                        <!-- Label for displaying player Wins -->
+                        <label class="form-check-label">@Player.Wins</label>
+                        </div>
+                        <div class="col">
+                        <!-- Label for displaying player Draws -->
+                        <label class="form-check-label">@Player.Draws</label>
+                        </div>
+                        <div class="col">
+                        <!-- Label for displaying player Losses -->
+                        <label class="form-check-label">@Player.Losses</label>
+                        </div>
                     </div>
-                    <div class="col">
-                    <!-- Label for displaying player name -->
-                    <label class="form-check-label">@Player.Name</label>
-                    </div>
-                    <div class="col">
-                    <!-- Label for displaying player Score -->
-                    <label class="form-check-label">@Player.Score</label>
-                    </div>
-                    <div class="col">
-                    <!-- Label for displaying player Wins -->
-                    <label class="form-check-label">@Player.Wins</label>
-                    </div>
-                    <div class="col">
-                    <!-- Label for displaying player Draws -->
-                    <label class="form-check-label">@Player.Draws</label>
-                    </div>
-                    <div class="col">
-                    <!-- Label for displaying player Losses -->
-                    <label class="form-check-label">@Player.Losses</label>
-                    </div>
-                </div>
+                }
             }
             <!-- Button for update standings -->
             <button class="btn btn-danger btn-sm ms-2" @onclick="() => Update()">Update</button>
@@ -86,7 +89,7 @@
     //add print method
     public void Print()
     {
-        string filename = "TourManager" + StateContainer.currentTournament.Date + ".txt"; //fix save location
+        string filename = Path.Combine(FileSystem.AppDataDirectory, $"{StateContainer.currentTournament.Name}");
         string header = $"{"Name":25} {"Score":25} {"Wins":25} {"Draws":25} {"Losses":25}";
         File.WriteAllText(filename, header);
         foreach (Player player in StateContainer.currentTournament.PlayerList)

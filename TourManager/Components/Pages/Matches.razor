@@ -82,11 +82,27 @@
             </div>
             @if (Match.Reported == false)
                 {
-                    <div class="col-md-6">
-                        <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">@Match.Player1.FirstName win</button>
-                        <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">@Match.Player2.FirstName win</button>
-                        <button @onclick="() => Report(Match, Draw)" class="btn btn-outline-success">Draw</button>
-                    </div>
+                    <!-- Check for a bye -->
+                    @if (Match.Player1.LastName == "bye")
+                    {
+                        <div class="col-md-6">
+                            <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">@Match.Player2.FirstName gets a bye</button>
+                        </div>
+                    }
+                    @if (Match.Player2.LastName == "bye")
+                    {
+                        <div class="col-md-6">
+                            <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">@Match.Player1.FirstName gets a bye</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-6">
+                            <button @onclick="() => Report(Match, P1)" class="btn btn-outline-success">@Match.Player1.FirstName win</button>
+                            <button @onclick="() => Report(Match, P2)" class="btn btn-outline-success">@Match.Player2.FirstName win</button>
+                            <button @onclick="() => Report(Match, Draw)" class="btn btn-outline-success">Draw</button>
+                        </div>
+                    }
                 }
             else
                 {
@@ -110,11 +126,17 @@
     {
         try
         {
-            RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber-1];
+            if (StateContainer.currentTournament.RoundList[RoundNumber - 1].Matches.Any())
+            {
+                RoundSelected = StateContainer.currentTournament.RoundList[RoundNumber - 1];
+            }
+            else
+                throw new NoMatchesException("No matches could be created");
+
         }
         catch (Exception e)
         {
-            string errorMessage = "No matches found.";
+            string errorMessage = "No matches found";
             await JSRuntime.InvokeVoidAsync("alert", $"Error: {errorMessage}."); //create dialog box
         }
     }
