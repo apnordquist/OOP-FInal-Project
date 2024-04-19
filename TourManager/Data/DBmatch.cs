@@ -12,7 +12,7 @@ namespace TourManager.Data
         //Insert statement
         public void Save(int player1, int player2, int round, int table, string result)
         {
-            string query = $"INSERT INTO rentaldb (player1, player2, round, table, result) VALUES('{player1}', '{player2}','{round}','{table}','{result}')";
+            string query = $"INSERT INTO DBmatches (player1, player2, round, table, result) VALUES('{player1}', '{player2}','{round}','{table}','{result}')";
 
             //open connection
             if (this.OpenConnection() == true)

@@ -31,7 +31,7 @@ namespace TourManager.Data
         //load playerlist from database
         public List<Player> Load()
         {
-            string query = $"SELECT * FROM DBplayers";
+            string query = $"SELECT * FROM DBplayer";
 
             //Create a var to store the result
             List<Player> players = new List<Player>();

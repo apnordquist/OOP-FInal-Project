@@ -201,6 +201,23 @@
         {
             newTournament.PlayerList.Add(player);
         }
+        List<Match> newMatches = matchDatabase.Load(newTournament);
+        for (int i = 0; i < newMatches.Count; i++)
+        {
+            Round newRound = new Round(i);
+            foreach (Match match in newMatches)
+            {
+                if (match.Round == newRound.CurrentRound)
+                {
+                    newRound.Matches.Add(match);
+                }
+            }
+            if (newRound.Matches.Any())
+            {
+                newTournament.RoundList.Add(newRound);
+            }
+        }
+        StateContainer.currentTournament = newTournament;
         statusMessage = "Tournament Loaded";
     }
 }
