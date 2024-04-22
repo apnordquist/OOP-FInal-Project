@@ -1,6 +1,7 @@
 ﻿@page "/matches"
 
 @using TourManager.Data
+@using TourManager.Exceptions
 @using Microsoft.Maui.Storage
 @using System.IO
 @using System.Text.Json
@@ -16,23 +17,29 @@
         <label style="font-weight: bold;">Current Round: @StateContainer.currentTournament.CurrentRound</label>
     </div>
 </div>
-<div>
+<div class="col-md-2">
     <button class="btn btn-primary" type="button" @onclick="NewRound">New Round</button>
 </div>
 <br/>
 
 <!-- Get Round -->
 <div class="row">
-    <div class="col-md-3">
-        <label style="font-weight: bold;">Enter Round Number</label>
+    <div class="col-md-2">
+        <label for="round" style="font-weight: bold;">Enter Round Number</label>
     </div>
-    <div class="col-md-4">
-        <input placeholder="@StateContainer.currentTournament.CurrentRound" @bind="@RoundNumber" class="form-control" />
+    <div class="col">
+        <select name="round" id="round" @bind="@RoundNumber" class="dropdown-center">
+            <!-- Set Range -->
+            @for (int i = 1; i <= StateContainer.currentTournament.CurrentRound; i++)
+            {
+                <option>@i</option>
+            }
+        </select>
     </div>
 </div>
 <!-- Get Button -->
 <div class="col-md-2">
-    <button @onclick="GetRound" class="btn btn-outline-success">Find Matches</button>
+    <button @onclick="GetRound" class="btn btn-outline-primary">Find Matches</button>
 </div>
 <br />
 

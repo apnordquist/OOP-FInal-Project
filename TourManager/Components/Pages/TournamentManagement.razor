@@ -1,5 +1,7 @@
 ﻿@page "/TournamentManagement"
 
+@using TourManager.Database
+@using TourManager.Exceptions
 @using TourManager.Data
 @using Microsoft.Maui.Storage
 @using System.IO
@@ -21,8 +23,8 @@
                 <!-- Button to create -->
                 <button class="btn btn-primary" type="button" @onclick="Create">New Tournament</button>
                 <!-- Buttons to manage -->
-                <button class="btn btn-primary" @onclick="Save">Save</button>
-                <button class="btn btn-primary" @onclick="Load">Load</button>
+                <button class="btn btn-outline-primary" @onclick="Save">Save</button>
+                <button class="btn btn-outline-primary" @onclick="Load">Load</button>
             <br />
             </div>
             <div>
@@ -62,9 +64,9 @@
                     </div>
                     <div class="col">
                         <!-- Button for editing players -->
-                        <button class="btn btn-danger btn-sm ms-2" @onclick="() => EditPlayer(Player)">Edit</button>
+                        <button class="btn btn-outline-danger btn-sm" @onclick="() => EditPlayer(Player)">Edit</button>
                         <!-- Button for deleting players -->
-                        <button class="btn btn-danger btn-sm ms-2" @onclick="() => RemovePlayer(StateContainer.currentTournament.PlayerList, Player)">Remove</button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => RemovePlayer(StateContainer.currentTournament.PlayerList, Player)">Remove</button>
                     </div>
                 </div>
             }
@@ -86,7 +88,7 @@
     //statuses
     private string statusMessage = "";
     //database connection
-    private DatabaseConnection tournamentDatabase = new DatabaseConnection();
+    private DBtournaments tournamentDatabase = new DBtournaments();
     private DBmatch matchDatabase = new DBmatch();
     private DBplayer playerDatabase = new DBplayer();
 
@@ -179,11 +181,18 @@
     }
     private async Task Save()
     {
-        tournamentDatabase.Save(StateContainer.currentTournament.Name, StateContainer.currentTournament.Organizer, StateContainer.currentTournament.Date);
+        //create tables
+        //tournamentDatabase.Create();
+        //playerDatabase.Create();
+        //matchDatabase.Create();
+        //save tournament details
+        tournamentDatabase.Save(StateContainer.currentTournament.Name, StateContainer.currentTournament.Organizer, StateContainer.currentTournament.Date, StateContainer.currentTournament.CurrentRound);
+        //save player information
         foreach (Player player in StateContainer.currentTournament.PlayerList)
         {
             playerDatabase.Save(player.PlayerID, player.FirstName, player.LastName, player.Wins, player.Draws, player.Losses, player.Score);
         }
+        //save rounds and matchs
         foreach (Round round in StateContainer.currentTournament.RoundList)
         {
             foreach (Match match in round.Matches)
@@ -191,18 +200,22 @@
                 matchDatabase.Save(match.Player1.PlayerID, match.Player2.PlayerID, match.Round, match.Table, match.Result);
             }
         }
+        //return confirmation message
         statusMessage = "Tournament Saved";
     }
     private void Load()
     {
+        //load tournamnet object
         Tournament newTournament = tournamentDatabase.Load();
+        //load player info
         List<Player> newPlayerlist = playerDatabase.Load();
         foreach (Player player in newPlayerlist)
         {
             newTournament.PlayerList.Add(player);
         }
+        //rebuild each round using match data
         List<Match> newMatches = matchDatabase.Load(newTournament);
-        for (int i = 0; i < newMatches.Count; i++)
+        for (int i = 0; i <= newTournament.CurrentRound; i++)
         {
             Round newRound = new Round(i);
             foreach (Match match in newMatches)
@@ -217,7 +230,9 @@
                 newTournament.RoundList.Add(newRound);
             }
         }
+        //set state container to loaded tournament
         StateContainer.currentTournament = newTournament;
+        //return confirmation message
         statusMessage = "Tournament Loaded";
     }
 }

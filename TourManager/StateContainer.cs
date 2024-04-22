@@ -10,14 +10,18 @@ namespace TourManager
 {
     public class StateContainer
     {
-        private Tournament savedTournament = new Tournament("None", "None"); //the saved state between pages and default state
+        //saved tournament
+        private Tournament savedTournament = new Tournament("None", "None");
 
-        public Tournament currentTournament //the state as reperesented on the page
+        //tournament to be called for each page
+        public Tournament currentTournament 
         {
-            get => savedTournament; //get the saved state
+            //call tournament
+            get => savedTournament;
             set
             {
-                savedTournament = value; //set state of the page
+                //set tournament for the page
+                savedTournament = value; 
                 NotifyStateChanged();
             }
         }

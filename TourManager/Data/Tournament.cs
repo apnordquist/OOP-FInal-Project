@@ -28,14 +28,14 @@ namespace TourManager.Data
             CurrentRound = 0;
         }
         //database
-        public Tournament(string name, string organizer, string date)
+        public Tournament(string name, string organizer, string date, int rounds)
         {
             Name = name;
             Organizer = organizer;
             Date = date;
             PlayerList = new List<Player>();
             RoundList = new List<Round>();
-            CurrentRound = 0;
+            CurrentRound = rounds;
         }
         //methods
         public void NewPlayer(string firstname, string lastname)
