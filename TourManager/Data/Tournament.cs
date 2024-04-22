@@ -81,6 +81,13 @@ namespace TourManager.Data
             match.EnterResult(winner);
             RankPlayers();
         }
+        public Player SearchByID(int ID)
+        {
+            Player player;
+            //find first player in list with matching ID
+            player = PlayerList.FirstOrDefault(p => p.PlayerID == ID);
+            return player;
+        }
         public bool IsEmpty()
         {
             if (Organizer == null && Date == null)

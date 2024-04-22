@@ -25,7 +25,7 @@ namespace TourManager.Data
             Table = table;
             Reported = false;
         }
-        //for database
+        //from database
         public Match(Player player1, Player player2, int round, int table, string result)
         {
             Player1 = player1;
@@ -33,7 +33,10 @@ namespace TourManager.Data
             Round = round;
             Table = table;
             Result = result;
-            EnterResult(result);
+            if (result != null) 
+            { 
+                Reported = true;
+            }
         }
         //method
         public void EnterResult(string winner)

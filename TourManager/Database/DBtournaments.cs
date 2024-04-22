@@ -10,10 +10,10 @@ namespace TourManager.Database
 {
     internal class DBtournaments : DatabaseConnection
     {
-/*        //create player table
+       //create player table
         public void Create()
         {
-            string query = "DROP TABLE `dbtournament`;\r\nCREATE TABLE `dbtournament` (\r\n\t`name` VARCHAR(30) NOT NULL,\r\n\t`organizer` VARCHAR(30) NULL DEFAULT NULL,\r\n\t`date` VARCHAR(30) NULL DEFAULT NULL,\r\n\tPRIMARY KEY (`name`)\r\n)\r\n;";
+            string query = "DROP TABLE `dbtournament`;CREATE TABLE `dbtournament` (`name` VARCHAR(30) NOT NULL,`organizer` VARCHAR(30) NULL DEFAULT NULL,`date` VARCHAR(30) NULL DEFAULT NULL,`rounds` INT(11) NULL,PRIMARY KEY (`name`));";
 
             //open connection
             if (OpenConnection() == true)
@@ -27,11 +27,11 @@ namespace TourManager.Database
                 //close connection
                 CloseConnection();
             }
-        }*/
+        }
         //Save Tournament
         public void Save(string name, string organizer, string date, int rounds)
         {
-            string query = $"INSERT INTO dbtournament (name, organizer, date, rounds) VALUES('{name}', '{organizer}','{date}','{rounds}')";
+            string query = $"INSERT INTO dbtournament VALUES('{name}', '{organizer}','{date}','{rounds}')";
 
             //open connection
             if (OpenConnection() == true)
@@ -53,8 +53,7 @@ namespace TourManager.Database
             string query = $"SELECT * FROM dbtournament";
 
             //Create a var to store the result
-            Tournament? select;
-            List<string> list = new List<string>();
+            Tournament? select = null;
 
             //Open connection
             if (OpenConnection() == true)
@@ -67,10 +66,12 @@ namespace TourManager.Database
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
+                    List<string> list = new List<string>();
                     list.Add(dataReader["name"].ToString());
                     list.Add(dataReader["organizer"].ToString());
                     list.Add(dataReader["date"].ToString());
                     list.Add(dataReader["rounds"].ToString());
+                    select = new Tournament(list[0], list[1], list[2], int.Parse(list[3]));
                 }
 
                 //close Data Reader
@@ -79,7 +80,7 @@ namespace TourManager.Database
                 //close Connection
                 CloseConnection();
 
-                select = new Tournament(list[0], list[1], list[2], int.Parse(list[3]));
+
                 //return list to be displayed
                 return select;
             }

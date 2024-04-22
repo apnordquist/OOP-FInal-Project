@@ -11,9 +11,9 @@ namespace TourManager.Database
     internal class DBmatch : DatabaseConnection
     {
         //create match table
-/*        public void Create()
+        public void Create()
         {
-            string query = "DROP TABLE `dbmatches`;\r\nCREATE TABLE `dbmatches` (\r\n\t`player1` INT(11) NOT NULL,\r\n\t`player2` INT(11) NOT NULL,\r\n\t`round` INT(11) NOT NULL,\r\n\t`table` INT(11) NOT NULL,\r\n\t`result` VARCHAR(30) NULL DEFAULT NULL,\r\n\tPRIMARY KEY (`player1`, `player2`)\r\n);";
+            string query = "DROP TABLE `dbmatches`;CREATE TABLE `dbmatches` (`player1` INT(11) NOT NULL,`player2` INT(11) NOT NULL,`round` INT(11) NOT NULL,`table` INT(11) NOT NULL,`result` VARCHAR(30) NULL DEFAULT NULL,PRIMARY KEY (`player1`, `player2`));";
 
             //open connection
             if (OpenConnection() == true)
@@ -27,11 +27,11 @@ namespace TourManager.Database
                 //close connection
                 CloseConnection();
             }
-        }*/
+        }
         //Insert statement
         public void Save(int player1, int player2, int round, int table, string result)
         {
-            string query = $"INSERT INTO dbmatches (player1, player2, round, table, result) VALUES('{player1}', '{player2}','{round}','{table}','{result}')";
+            string query = $"INSERT INTO dbmatches VALUES('{player1}', '{player2}','{round}','{table}','{result}')";
 
             //open connection
             if (OpenConnection() == true)
@@ -54,7 +54,6 @@ namespace TourManager.Database
 
             //Create a var to store the result
             List<Match> matches = new List<Match>();
-            List<string> list = new List<string>();
 
             //Open connection
             if (OpenConnection() == true)
@@ -67,11 +66,17 @@ namespace TourManager.Database
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    list.Add(dataReader["player1"].ToString());
-                    list.Add(dataReader["player2"].ToString());
-                    list.Add(dataReader["round"].ToString());
-                    list.Add(dataReader["table"].ToString());
-                    list.Add(dataReader["result"].ToString());
+                    string player1ID = dataReader["player1"].ToString();
+                    string player2ID = dataReader["player2"].ToString();
+                    string round = dataReader["round"].ToString();                  
+                    string table = dataReader["table"].ToString();
+                    string result = dataReader["result"].ToString();
+                    //get players from playerlist
+                    Player player1 = tournament.SearchByID(int.Parse(player1ID));
+                    Player player2 = tournament.SearchByID(int.Parse(player2ID));
+
+                    Match newMatch = new Match(player1, player2, int.Parse(round), int.Parse(table), result);
+                    matches.Add(newMatch);
                 }
 
                 //close Data Reader
@@ -79,11 +84,6 @@ namespace TourManager.Database
 
                 //close Connection
                 CloseConnection();
-                Player player1 = tournament.PlayerList[int.Parse(list[0])];
-                Player player2 = tournament.PlayerList[int.Parse(list[1])];
-
-                Match newMatch = new Match(player1, player2, int.Parse(list[2]), int.Parse(list[3]), list[4]);
-                matches.Add(newMatch);
             }
             return matches;
         }

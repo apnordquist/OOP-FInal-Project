@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\apnor\CPRG211\OOP-FInal Project\TourManager\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-04-22T17:59:57.317</Modified>
+      <Modified>2024-04-22T21:05:15.224</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\apnor\CPRG211\OOP-FInal Project\TourManager\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-04-22T17:59:57.197</Modified>
+      <Modified>2024-04-22T21:05:15.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\apnor\CPRG211\OOP-FInal Project\TourManager\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\TourManager.runtimeconfig.json">
       <PackagePath>TourManager.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\apnor\CPRG211\OOP-FInal Project\TourManager\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\TourManager.dll">
       <PackagePath>TourManager.dll</PackagePath>
-      <Modified>2024-04-22T17:59:56.870</Modified>
+      <Modified>2024-04-22T21:05:14.745</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\apnor\CPRG211\OOP-FInal Project\TourManager\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>TourManager.exe</PackagePath>
-      <Modified>2024-04-22T17:59:56.912</Modified>
+      <Modified>2024-04-22T21:05:14.788</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\apnor\CPRG211\OOP-FInal Project\TourManager\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>

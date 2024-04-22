@@ -29,8 +29,8 @@ namespace TourManager.Data
             Name = firstname + " " + lastname;
             Opponents = new LinkedList<Player>();
         }
-        //for database
-        public Player(int id, string firstname, string lastname, int wins, int draws, int losses) 
+        //from database
+        public Player(int id, string firstname, string lastname, int wins, int draws, int losses, int score) 
         {
             PlayerID = id;
             FirstName = firstname;
@@ -40,17 +40,17 @@ namespace TourManager.Data
             Wins = wins;
             Draws = draws;
             Losses = losses;
-            UpdateScore();
+            Score = score;
         }
         //methods
+        public void UpdateScore() //to update score after each round
+        {
+            Score = Wins * 3 + Draws; //wins worth more than draws, losses count for 0
+        }
         public string PrintRecords()
         {
             string record = Wins + "-" + Draws + "-" + Losses;
             return record;
-        }
-        public void UpdateScore() //to update score after each round
-        {
-            Score = Wins * 3 + Draws; //wins worth more than draws, losses count for 0
         }
         public override string ToString()
         {

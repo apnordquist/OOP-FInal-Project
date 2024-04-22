@@ -164,8 +164,9 @@
     }
     private async void EditPlayer(Player player)
     {
+        //new window for updated name
         string newFirst = await JSRuntime.InvokeAsync<string>("prompt","Enter First Name:",$"{player.FirstName}");
-        string newLast = await JSRuntime.InvokeAsync<string>("prompt", "Enter First Name:", $"{player.LastName}");
+        string newLast = await JSRuntime.InvokeAsync<string>("prompt", "Enter Last Name:", $"{player.LastName}");
         player.FirstName = newFirst;
         player.LastName = newLast; 
     }
@@ -181,10 +182,10 @@
     }
     private async Task Save()
     {
-        //create tables
-        //tournamentDatabase.Create();
-        //playerDatabase.Create();
-        //matchDatabase.Create();
+        //clear tables
+        tournamentDatabase.Create();
+        playerDatabase.Create();
+        matchDatabase.Create();
         //save tournament details
         tournamentDatabase.Save(StateContainer.currentTournament.Name, StateContainer.currentTournament.Organizer, StateContainer.currentTournament.Date, StateContainer.currentTournament.CurrentRound);
         //save player information

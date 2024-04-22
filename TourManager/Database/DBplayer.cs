@@ -10,28 +10,10 @@ namespace TourManager.Database
 {
     internal class DBplayer : DatabaseConnection
     {
-/*        //create player table
+        //create player table
         public void Create()
         {
-            string query = "DROP TABLE `dbplayer`;\r\nCREATE TABLE `dbplayer` (\r\n\t`id` INT(11) NOT NULL,\r\n\t`firstname` VARCHAR(30) NULL DEFAULT NULL COLLATE,\r\n\t`lastname` VARCHAR(30) NULL DEFAULT NULL,\r\n\t`wins` INT(11) NULL DEFAULT NULL,\r\n\t`draws` INT(11) NULL DEFAULT NULL,\r\n\t`losses` INT(11) NULL DEFAULT NULL,\r\n\t`score` INT(11) NULL DEFAULT NULL,\r\n\tPRIMARY KEY (`id`)\r\n);";
-
-            //open connection
-            if (OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                CloseConnection();
-            }
-        }*/
-        //Save player to database
-        public void Save(int id, string firstname, string lastname, int wins, int draws, int losses, int score)
-        {
-            string query = $"INSERT INTO dbplayer (id, firstname, lastname, wins, draws, losses, score) VALUES('{id}', '{firstname}', '{lastname}','{wins}','{draws}','{losses}','{score}')";
+            string query = "DROP TABLE `dbplayer`; CREATE TABLE `dbplayer` (`id` INT(11) NOT NULL, `firstname` VARCHAR(30) NULL DEFAULT NULL, `lastname` VARCHAR(30) NULL DEFAULT NULL, `wins` INT(11) NULL DEFAULT NULL, `draws` INT(11) NULL DEFAULT NULL, `losses` INT(11) NULL DEFAULT NULL, `score` INT(11) NULL DEFAULT NULL, PRIMARY KEY (`id`));";
 
             //open connection
             if (OpenConnection() == true)
@@ -46,16 +28,31 @@ namespace TourManager.Database
                 CloseConnection();
             }
         }
+        //Save player to database
+        public void Save(int id, string firstname, string lastname, int wins, int draws, int losses, int score)
+        {
+            string query = $"INSERT INTO dbplayer VALUES ('{id}', '{firstname}', '{lastname}','{wins}','{draws}','{losses}','{score}')";
 
+            //open connection
+            if (OpenConnection() == true)
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                //Execute command
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                CloseConnection();
+            }
+        }
         //load playerlist from database
         public List<Player> Load()
         {
-            string query = $"SELECT * FROM dbplayer";
+            string query = $"SELECT * FROM dbplayer;";
 
-            //Create a var to store the result
+            //list for the loaded players
             List<Player> players = new List<Player>();
-            List<string> list = new List<string>();
-            Player newplayer;
 
             //Open connection
             if (OpenConnection() == true)
@@ -68,12 +65,15 @@ namespace TourManager.Database
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    list.Add(dataReader["id"].ToString());
-                    list.Add(dataReader["firstname"].ToString());
-                    list.Add(dataReader["lastname"].ToString());
-                    list.Add(dataReader["wins"].ToString());
-                    list.Add(dataReader["draws"].ToString());
-                    list.Add(dataReader["losses"].ToString());
+                    string id = dataReader["id"].ToString();
+                    string first = dataReader["firstname"].ToString();
+                    string last = dataReader["lastname"].ToString();
+                    string wins = dataReader["wins"].ToString();
+                    string draws = dataReader["draws"].ToString();
+                    string losses = dataReader["losses"].ToString();
+                    string score = dataReader["score"].ToString();
+                    Player newplayer = new Player(int.Parse(id), first, last, int.Parse(wins), int.Parse(draws), int.Parse(losses), int.Parse(score));
+                    players.Add(newplayer);
                 }
 
                 //close Data Reader
@@ -81,11 +81,8 @@ namespace TourManager.Database
 
                 //close Connection
                 CloseConnection();
-
-                newplayer = new Player(int.Parse(list[0]), list[1], list[2], int.Parse(list[3]), int.Parse(list[4]), int.Parse(list[5]));
-                //return list to be displayed
-                players.Append(newplayer);
             }
+            //return list to be displayed
             return players;
         }
     }
